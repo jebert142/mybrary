@@ -1,10 +1,17 @@
 const express = require('express')
-const author = require('../models/author')
 const router = express.Router()
 const Author = require('../models/author')
 
 
-//All Authors Route
+/**
+*   All Authors Route
+*   @param      {req} query // used to pass in the query from the form
+*   @returns    {res}       // responds by rendering updated search options
+*
+*   This ansyncronous GET function allows for a query string to be passed in
+*   and will continue on if there's no query. After that, the function will 
+*   return all authors that 
+*/
 router.get('/', async (req, res) => {
     let searchOptions = {}
     if (req.query.name != null && req.query.name !== '') {
@@ -23,7 +30,7 @@ router.get('/', async (req, res) => {
 
 //New Authors Route
 router.get('/new', (req, res) => {
-    res.render('authors/new', {author: new author() })
+    res.render('authors/new', {author: new Author() })
 })
 
 // Create Author Route
